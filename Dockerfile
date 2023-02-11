@@ -1,4 +1,4 @@
-FROM ubi8/s2i-base:rhel8.7
+FROM registry.stage.redhat.io/ubi8/ubi:8.7
 
 USER root
 
