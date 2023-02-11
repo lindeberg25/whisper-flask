@@ -1,17 +1,12 @@
 FROM registry.access.redhat.com/ubi8/ubi
 
+USER root
+
 RUN echo "sslverify=false" >> /etc/yum.conf
 
-#RUN subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
-
-#RUN dnf install -y --enablerepo=codeready-builder-for-rhel-8-x86_64-rpms ffmpeg
-
-
-RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
-RUN dnf update
-RUN dnf upgrade
-RUN dnf install ffmpeg
+RUN yum install epel-release
+RUN yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
+RUN yum install ffmpeg ffmpeg-devel
 
 WORKDIR /python-docker
 
@@ -29,5 +24,7 @@ RUN pip3 install "git+https://github.com/openai/whisper.git"
 COPY . .
 
 EXPOSE 5000
+
+USER 1000
 
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
