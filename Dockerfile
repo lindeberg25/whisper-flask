@@ -4,9 +4,9 @@ USER root
 
 RUN echo "sslverify=false" >> /etc/yum.conf
 
-RUN yum install epel-release
-RUN yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
-RUN yum install ffmpeg ffmpeg-devel
+RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+RUN dnf update
+RUN dnf install ffmpeg 
 
 WORKDIR /python-docker
 
