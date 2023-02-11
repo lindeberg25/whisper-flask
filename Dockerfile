@@ -1,4 +1,4 @@
-FROM registry.stage.redhat.io/ubi8/ubi:8.7
+FROM registry.access.redhat.com/ubi8/ubi:8.1
 
 USER root
 
