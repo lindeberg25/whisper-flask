@@ -2,7 +2,10 @@ FROM registry.access.redhat.com/ubi8/ubi
 
 RUN echo "sslverify=false" >> /etc/yum.conf
 
-RUN subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+#RUN subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+
+RUN dnf install -y --enablerepo=codeready-builder-for-rhel-8-x86_64-rpms ffmpeg
+
 
 RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
