@@ -1,5 +1,7 @@
 FROM registry.access.redhat.com/ubi9/ubi
 
+RUN echo "sslverify=false" >> /etc/yum.conf
+
 RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
 RUN dnf install -y https://download1.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm
 RUN dnf upgrade -y
