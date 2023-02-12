@@ -1,36 +1,12 @@
-# Basing the build image on RHEL UBI image.
-# See `docker search registry.access.redhat.com/ubi` 
-FROM registry.access.redhat.com/ubi8/python-38
+FROM python:3.10-slim
 
 USER root
-
-ARG USERNAME
-ARG PASSWORD
-
-ENV SMDEV_CONTAINER_OFF 1
-
-# CodeReady contains packages required for develpers (i.e. imake)
-# Must register system using RHEL subscription in order to access these packages
-
-RUN subscription-manager register --username lindeberg.lpl@pf.gov.br --password Lin25068484 --auto-attach \
-  && yum repolist \
-  && subscription-manager attach --auto \
-  && subscription-manager repos --enable=codeready-builder-for-rhel-8-x86_64-rpms \
-  && yum repolist
-
-RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
-
-RUN dnf upgrade
-RUN dnf install ffmpeg
-
-
 
 #RUN dnf update -y
 
 #RUN dnf upgrade -y
 
-RUN echo "sslverify=false" >> /etc/yum.conf
+#RUN echo "sslverify=false" >> /etc/yum.conf
 
 #RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
 #RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm -y 
@@ -41,18 +17,17 @@ RUN echo "sslverify=false" >> /etc/yum.conf
 
 #RUN dnf --enablerepo=raven-extras --skip-broken install SDL2
 
-
-
-
-
 #RUN dnf install --nobest --skip-broken ffmpeg
 #RUN dnf install ffmpeg 
 
-
 WORKDIR /deployment
 
+RUN apt-get -qq update \
+    && apt-get -qq install --no-install-recommends ffmpeg
+
+
 COPY requirements.txt requirements.txt
-RUN  dnf -y install git
+RUN  apt-get -y install git
 
 
 ADD https://openaipublic.azureedge.net/main/whisper/models/345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1/medium.pt /deployment
@@ -67,6 +42,6 @@ COPY . .
 
 EXPOSE 5000
 
-#USER 1000
+USER 1001
 
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
