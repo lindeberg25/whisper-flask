@@ -28,7 +28,7 @@ RUN dnf install --nobest --skip-broken ffmpeg
 WORKDIR /deployment
 
 COPY requirements.txt requirements.txt
-RUN dnf update && dnf install git -y
+RUN  dnf -y install git
 
 
 ADD https://openaipublic.azureedge.net/main/whisper/models/345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1/medium.pt /deployment
