@@ -9,7 +9,8 @@ ARG PASSWORD
 
 # CodeReady contains packages required for develpers (i.e. imake)
 # Must register system using RHEL subscription in order to access these packages
-RUN subscription-manager register --username lindeberg.lpl@pf.gov.br --password Lin25068484 \
+
+RUN subscription-manager register --username lindeberg.lpl@pf.gov.br --password Lin25068484 --auto-attach \
   && yum repolist \
   && subscription-manager attach --auto \
   && subscription-manager repos --enable=codeready-builder-for-rhel-8-x86_64-rpms \
