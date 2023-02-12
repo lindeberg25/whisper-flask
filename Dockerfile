@@ -1,20 +1,6 @@
-FROM registry.access.redhat.com/ubi8/ubi:8.1
+FROM ubi8/s2i-base:rhel8.7
 
 USER root
-
-# download and extract source archive
-RUN dnf install wget -y
-RUN wget https://www.python.org/ftp/python/3.8.11/Python-3.8.11.tgz
-RUN tar xzf Python-3.8.11.tgz Python-3.8.11/
-RUN cd Python-3.8.11/
-# configure with all optimizations
-RUN ./configure --enable-optimizations --with-ensurepip=install
-# do not touch system default python
-RUN make altinstall
-# cleanup
-RUN cd .. 
-RUN rm -rf Python-3.8.11/
-
 
 RUN echo "sslverify=false" >> /etc/yum.conf
 
