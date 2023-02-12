@@ -2,6 +2,10 @@ FROM registry.access.redhat.com/ubi8/python-38
 
 USER 0
 
+RUN dnf update -y
+
+RUN dnf upgrade -y
+
 RUN echo "sslverify=false" >> /etc/yum.conf
 
 RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
@@ -15,7 +19,7 @@ RUN dnf --enablerepo=raven-extras install SDL2
 
 
 
-RUN dnf upgrade -y
+
 
 RUN dnf install --nobest ffmpeg
 #RUN dnf install ffmpeg 
