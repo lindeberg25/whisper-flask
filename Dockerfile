@@ -15,7 +15,7 @@ RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8
 RUN dnf -y install https://pkgs.dyn.su/el8/base/x86_64/raven-release-1.0-1.el8.noarch.rpm
 RUN dnf -y install raven-release
 
-RUN dnf --enablerepo=raven-extras install SDL2
+RUN dnf --enablerepo=raven-extras --skip-broken install SDL2
 
 
 
