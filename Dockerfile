@@ -4,20 +4,17 @@ USER 0
 
 RUN echo "sslverify=false" >> /etc/yum.conf
 
-#RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
-#RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm -y 
+RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm -y 
+
+RUN dnf --enablerepo=raven-extras install SDL2
 
 
-RUN yum -y install epel-release
-RUN rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
-RUN rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-1.el7.nux.noarch.rpm
-RUN yum -y --enablerepo=epel,nux-dextop install ffmpeg
 
-
-#RUN dnf upgrade -y
+RUN dnf upgrade -y
 
 #RUN dnf install --nobest --skip-broken ffmpeg
-#RUN dnf install ffmpeg 
+RUN dnf install ffmpeg 
 
 
 WORKDIR /deployment
