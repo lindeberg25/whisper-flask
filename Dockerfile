@@ -2,6 +2,8 @@
 # See `docker search registry.access.redhat.com/ubi` 
 FROM registry.access.redhat.com/ubi8/python-38
 
+USER root
+
 ARG USERNAME
 ARG PASSWORD
 
@@ -20,8 +22,6 @@ RUN dnf upgrade
 RUN dnf install ffmpeg
 
 
-
-USER 0
 
 #RUN dnf update -y
 
