@@ -22,8 +22,8 @@ RUN chmod 777 /deployment/medium.pt
 
 
 
-RUN pip3 install -r requirements.txt
-RUN pip3 install "git+https://github.com/openai/whisper.git" 
+RUN pip install -r requirements.txt
+RUN pip install "git+https://github.com/openai/whisper.git" 
 
 COPY . .
 
