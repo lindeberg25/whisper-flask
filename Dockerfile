@@ -10,7 +10,7 @@ RUN echo "sslverify=false" >> /etc/yum.conf
 
 RUN yum -y install epel-release
 RUN rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
-RUN rpm -Uvh http://li.nux.ro/download/nux/dextop/el8/x86_64/nux-dextop-release-0-1.el8.nux.noarch.rpm
+RUN rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-1.el7.nux.noarch.rpm
 RUN yum -y --enablerepo=epel,nux-dextop install ffmpeg
 
 
