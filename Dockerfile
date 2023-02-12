@@ -11,14 +11,14 @@ RUN dnf upgrade -y
 #dnf config-manager --set-enabled powertools
 RUN dnf install --nobest --skip-broken ffmpeg
 
-WORKDIR /python-docker
+WORKDIR /deployment
 
 COPY requirements.txt requirements.txt
 RUN dnf update && dnf install git -y
 
 
 ADD https://openaipublic.azureedge.net/main/whisper/models/345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1/medium.pt /deployment
-RUN chmod 777 /python-docker/medium.pt
+RUN chmod 777 /deployment/medium.pt
 
 
 RUN pip3 install -r requirements.txt
