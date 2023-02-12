@@ -4,11 +4,11 @@ USER 0
 
 RUN echo "sslverify=false" >> /etc/yum.conf
 
-#RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
-#RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm -y 
+RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm -y 
 
 
-RUN dnf -y install https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+#RUN dnf -y install https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
 RUN dnf -y install https://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/s/SDL2-2.0.14-2.el7.x86_64.rpm
 #RUN yum -y install ffmpeg
 
