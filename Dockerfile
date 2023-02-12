@@ -7,6 +7,8 @@ USER root
 ARG USERNAME
 ARG PASSWORD
 
+ENV SMDEV_CONTAINER_OFF 1
+
 # CodeReady contains packages required for develpers (i.e. imake)
 # Must register system using RHEL subscription in order to access these packages
 
