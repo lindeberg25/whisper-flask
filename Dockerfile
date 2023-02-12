@@ -8,9 +8,9 @@ RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noar
 RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm -y 
 #RUN dnf install https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm -y
 RUN dnf upgrade -y
-RUN dnf config-manager --set-enabled powertools
+
 #RUN dnf install --nobest --skip-broken ffmpeg
-RUN dnf install ffmpeg
+RUN dnf install ffmpeg ffmpeg-devel
 
 
 WORKDIR /deployment
