@@ -3,6 +3,7 @@ FROM registry.access.redhat.com/ubi8/ubi:8.1
 USER root
 
 # download and extract source archive
+RUN dnf install wget -y
 RUN wget https://www.python.org/ftp/python/3.8.11/Python-3.8.11.tgz
 RUN tar xzf Python-3.8.11.tgz Python-3.8.11/
 RUN cd Python-3.8.11/
