@@ -1,4 +1,4 @@
-FROM ubi8/s2i-base:rhel8.7
+FROM registry.access.redhat.com/ubi8/python-38
 
 USER root
 
