@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/python-38
 
-USER root
+USER 0
 
 RUN echo "sslverify=false" >> /etc/yum.conf
 
@@ -29,6 +29,6 @@ COPY . .
 
 EXPOSE 5000
 
-USER 1000
+#USER 1000
 
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
