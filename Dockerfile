@@ -21,7 +21,7 @@ RUN dnf --enablerepo=raven-extras --skip-broken install SDL2
 
 
 
-RUN dnf install --nobest ffmpeg
+RUN dnf install --nobest --skip-broken ffmpeg
 #RUN dnf install ffmpeg 
 
 
