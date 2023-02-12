@@ -9,8 +9,11 @@ RUN dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8
 
 
 #RUN dnf -y install https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
-RUN dnf -y install https://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/s/SDL2-2.0.14-2.el7.x86_64.rpm
+#RUN dnf -y install https://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/s/SDL2-2.0.14-2.el7.x86_64.rpm
 #RUN yum -y install ffmpeg
+
+RUN yum install dnf-plugins-core
+RUN yum config-manager --set-enabled powertools
 
 
 RUN dnf upgrade -y
