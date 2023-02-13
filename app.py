@@ -2,10 +2,14 @@ from flask import Flask, abort, request
 from tempfile import NamedTemporaryFile
 import whisper
 import torch
+import os
+
 
 # Check if NVIDIA GPU is available
 torch.cuda.is_available()
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+
+os.environ['TRANSFORMERS_CACHE'] = '/deployment/cache/'
 
 # Load the Whisper model:
 model = whisper.load_model("medium.pt", device=DEVICE)
