@@ -42,6 +42,6 @@ COPY . .
 
 EXPOSE 5000
 
-USER 1001
+#USER 1001
 
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
