@@ -22,6 +22,9 @@ USER root
 
 WORKDIR /deployment
 
+RUN mkdir /deployment/cache/
+RUN chmod 777 /deployment/cache/
+
 RUN apt-get -qq update \
     && apt-get -qq install --no-install-recommends ffmpeg
 
