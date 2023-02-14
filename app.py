@@ -46,6 +46,6 @@ def handler():
             'filename': filename,
             'transcript': result['text'],
         })
-
+    print(results)
     # This will be automatically converted to JSON.
     return {'results': results}
