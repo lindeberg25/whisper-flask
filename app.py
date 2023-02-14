@@ -41,11 +41,12 @@ def handler():
         handle.save(temp)
         # Let's get the transcript of the temporary file.
         result = model.transcribe(temp.name)
+        print(result)
         # Now we can store the result object for this file.
         results.append({
             'filename': filename,
             'transcript': result['text'],
         })
-    print(results)
+   
     # This will be automatically converted to JSON.
     return {'results': results}
