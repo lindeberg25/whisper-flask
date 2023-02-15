@@ -29,9 +29,6 @@ def hello():
 
 
 @app.route('/whisper', methods=['POST'])
-
-start = time.time()
-
 def handler():
     if not request.files:
         # If the user didn't submit any files, return a 400 (Bad Request) error.
@@ -41,7 +38,7 @@ def handler():
     results = []
     
     
-    
+    start = time.time()
     # Loop over every file that the user submitted.
     for filename, handle in request.files.items():
         # Create a temporary file.
