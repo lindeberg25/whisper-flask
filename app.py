@@ -4,6 +4,11 @@ import whisper
 import torch
 import os
 import logging
+import time
+
+
+#print("--- %s seconds ---" % (time.time() - start_time))
+
 
 
 # Check if NVIDIA GPU is available
@@ -26,6 +31,9 @@ def hello():
 
 
 @app.route('/whisper', methods=['POST'])
+
+start_time = time.time()
+
 def handler():
     if not request.files:
         # If the user didn't submit any files, return a 400 (Bad Request) error.
@@ -33,7 +41,9 @@ def handler():
 
     # For each file, let's store the results in a list of dictionaries.
     results = []
-
+    
+    
+    
     # Loop over every file that the user submitted.
     for filename, handle in request.files.items():
         # Create a temporary file.
@@ -44,6 +54,9 @@ def handler():
         handle.save(temp)
         # Let's get the transcript of the temporary file.
         result = model.transcribe(temp.name)
+        
+        
+        app.logger.info("--- %s seconds ---" % (time.time() - start_time))
         app.logger.info( result['text'])
         # Now we can store the result object for this file.
         results.append({
