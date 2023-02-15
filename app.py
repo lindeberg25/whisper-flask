@@ -17,6 +17,8 @@ model = whisper.load_model("medium.pt", device=DEVICE)
 
 app = Flask(__name__)
 
+logging.basicConfig(filename='record.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
+
 
 @app.route("/")
 def hello():
