@@ -3,6 +3,7 @@ from tempfile import NamedTemporaryFile
 import whisper
 import torch
 import os
+import logging
 
 
 # Check if NVIDIA GPU is available
@@ -41,12 +42,12 @@ def handler():
         handle.save(temp)
         # Let's get the transcript of the temporary file.
         result = model.transcribe(temp.name)
-        print(result)
+        app.logger.info( result['text'])
         # Now we can store the result object for this file.
         results.append({
             'filename': filename,
             'transcript': result['text'],
         })
-   
+    
     # This will be automatically converted to JSON.
     return {'results': results}
