@@ -7,8 +7,6 @@ import logging
 import time
 
 
-#print("--- %s seconds ---" % (time.time() - start_time))
-
 
 
 # Check if NVIDIA GPU is available
@@ -32,7 +30,7 @@ def hello():
 
 @app.route('/whisper', methods=['POST'])
 
-start_time = time.time()
+start = time.time()
 
 def handler():
     if not request.files:
@@ -56,7 +54,7 @@ def handler():
         result = model.transcribe(temp.name)
         
         
-        app.logger.info("--- %s seconds ---" % (time.time() - start_time))
+        app.logger.info("--- %s seconds ---" % (time.time() - start))
         app.logger.info( result['text'])
         # Now we can store the result object for this file.
         results.append({
